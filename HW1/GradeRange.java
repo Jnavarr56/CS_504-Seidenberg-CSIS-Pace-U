@@ -23,7 +23,7 @@ public class GradeRange {
 
         if (this.max != 0) {
 
-            this.scoresInRange  = score >= this.min && score <= this.max ? this.scoresInRange + 1 : this.scoresInRange;
+            this.scoresInRange = score >= this.min && score <= this.max ? this.scoresInRange + 1 : this.scoresInRange;
 
         }
 
@@ -46,11 +46,9 @@ public class GradeRange {
             "*".repeat(this.scoresInRange)
         );
 
+
     }
 
 }
-
-
-
 
 

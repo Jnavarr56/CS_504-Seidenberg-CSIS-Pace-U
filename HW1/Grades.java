@@ -99,9 +99,9 @@ public class Grades {
 
         String histogramStr = "";
 
-        for (int grade : values) {
+        for (int grade : this.values) {
 
-            for (GradeRange range : ranges) {
+            for (GradeRange range : this.ranges) {
 
                 range.isInRange(grade);
 
@@ -109,7 +109,7 @@ public class Grades {
 
         }
 
-        for (GradeRange range : ranges) {
+        for (GradeRange range : this.ranges) {
 
             histogramStr += "\n" + range.showFreqStr();
 

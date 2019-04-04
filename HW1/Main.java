@@ -33,25 +33,47 @@ public class Main {
         
         Grades classExamGrades = new Grades(scores);
 
-        String summaryStats = String.format(
+        String[] colHeaders = {"Highest Score", "Lowest Score", "Average Score", "# of Failing Scores"};
+        String[] colValues = {
+            Integer.toString(classExamGrades.highest()),
+            Integer.toString(classExamGrades.lowest()), 
+            String.format("%.2f", classExamGrades.average()),
+            Integer.toString(classExamGrades.numOfFailingGrades(cutoff)), 
+        };   
 
-            "- Highest Score: %d\n" +
-            "- Lowest Score: %d\n" +
-            "- Average Score: %f\n" +
-            "- Failing Scores: %d\n" + 
-            "- Histogram:%s",
-            
-            classExamGrades.highest(),
-            classExamGrades.lowest(),
-            classExamGrades.average(),
-            classExamGrades.numOfFailingGrades(cutoff),
-            classExamGrades.histogram()
+        System.out.println("------------------------------------------------------------------------");
 
-        );
+        String headerRow = "||";
+        String row = "||";
+        String leftCellSpace = "";
+        String rightCellSpace = "";
+        
+        for (int c = 0; c < colHeaders.length; c++) {
 
-        System.out.println(summaryStats);
+            headerRow += String.format(" %s |", colHeaders[c]);
 
-        System.out.println("\n\n===================\n");
+            leftCellSpace = " ".repeat(((colHeaders[c].length() + 2) - colValues[c].length()) / 2);
+
+            rightCellSpace = " ".repeat((colHeaders[c].length() + 2) - (leftCellSpace.length() + colValues[c].length()));
+
+            row += String.format("%s|",  leftCellSpace + colValues[c] + rightCellSpace);
+
+        }
+
+        headerRow += "|";
+        row += "|";
+
+        System.out.println(headerRow);
+
+        System.out.println("||---------------|--------------|---------------|---------------------||");
+
+        System.out.println(row);
+
+        System.out.println("||---------------|--------------|---------------|---------------------||");
+
+        System.out.println(classExamGrades.histogram());
+
+        System.out.println("\n===================\n");
 
     }
 
