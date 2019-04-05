@@ -4,6 +4,15 @@ import java.lang.*;
 public class Student {
 
     private static ArrayList<Student> ALL_STUDENTS = new ArrayList<Student>();
+     
+    private static String[] fieldNames = {
+        "      ID #:      ", 
+        "      Level       ", 
+        "      Midterm Score:      ", 
+        "      Final Score:      ", 
+        "      Average:      ",
+        "      Letter Grade:      "
+    };
 
     private String id;
     private int midtermExam;
@@ -25,6 +34,12 @@ public class Student {
     public static ArrayList<Student> viewRoster() {
 
         return Student.ALL_STUDENTS;
+
+    }
+
+    public static void deleteFromRoster(int i) {
+
+        Student.ALL_STUDENTS.remove(i);
 
     }
 
@@ -104,17 +119,60 @@ public class Student {
 
     }
 
+    private static String generateCellSpace(String fieldName, String value) {
+
+        String leftSpace = " ".repeat((fieldName.length() - value.length()) / 2);
+        String rightSpace = " ".repeat(fieldName.length() - (leftSpace.length() + value.length()));
+
+        return leftSpace + value + rightSpace;
+
+    }
+    
+    public static String getTable() {
+
+        String headerRow = "||" + String.join("|", fieldNames) + "||";
+        String dataRows = "";
+        String table = "";
+
+        for (Student student : Student.viewRoster()) {
+
+            dataRows += String.format(
+                "||%s|%s|%s|%s|%s|%s||\n%s",
+                generateCellSpace(Student.fieldNames[0], student.getId()),
+                generateCellSpace(Student.fieldNames[1], student.getLevel()),
+                generateCellSpace(Student.fieldNames[2], Integer.toString(student.getMidtermExam())),
+                generateCellSpace(Student.fieldNames[3], Integer.toString(student.getFinalExam())),
+                generateCellSpace(Student.fieldNames[4], Double.toString(student.calcAvg())),
+                generateCellSpace(Student.fieldNames[5], Character.toString(student.getLetterGrade())),
+                "-".repeat(headerRow.length()) + "\n"
+            ); 
+                                       
+        }
+
+        table = String.format(
+            "%s\n%s\n%s\n%s",
+            "=".repeat(headerRow.length()),
+            headerRow,
+            "=".repeat(headerRow.length()),
+            dataRows
+        );
+
+        return "\n\nCLASS ROSTER AND OPTIONS\n" + table;
+
+    }
+
+
     public static String displayRoster() {
 
         if (Student.ALL_STUDENTS.size() == 0) {
 
-            return "There are currently no students in the class roster";
+            return "There are currently no students in the class roster.\n";
 
         }
 
         else {
 
-            return (new StudentTable(Student.ALL_STUDENTS)).getTable();
+            return Student.getTable();
 
         }
 
