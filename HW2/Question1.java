@@ -28,12 +28,18 @@ public class Question1 {
                     CreateStudent.run();
     
                 }
-    
+                
                 else if (Student.viewRoster().size() > 0) {
 
                     if (userDashInput.equals("2")) { 
 
                         DeleteStudent.run(); 
+
+                    }
+
+                    else if (userDashInput.equals("3")) { 
+
+                        //UpdateStudent.run(); 
 
                     }
     
