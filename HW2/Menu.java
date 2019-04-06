@@ -5,6 +5,7 @@ public class Menu {
         "2) Delete a student from the roster\n" +
         "3) Edit a student's info.\n" + 
         "4) Exit";
+
     private static int dashExitOption = 4;
 
     // This method will print the roster and menu options.
@@ -14,7 +15,11 @@ public class Menu {
 
             String.format(
                 "\n%s\n%s\n%s\n%s\n> Your Selection: ",
-                "=".repeat(75), Student.displayRoster(), Menu.menu, "-".repeat(75),"\n Your Selection: "
+                "=".repeat(75), 
+                Student.displayRoster(), 
+                Menu.menu, 
+                "-".repeat(75),
+                "\n Your Selection: "
             )
 
         );
@@ -78,6 +83,14 @@ public class Menu {
     public static void invalidDataInputMsg(int numPeriods, int delay, String symbolStr) {
 
         System.out.print("            +++ Not a valid input. Please try again");
+        Helpers.generateLoadingSymbols(numPeriods, delay, symbolStr);
+
+    }
+
+
+    public static void invalidDataInputMsg(int numPeriods, int delay, String symbolStr, int lvl) {
+
+        System.out.print("                 ++++ Not a valid input. Please try again");
         Helpers.generateLoadingSymbols(numPeriods, delay, symbolStr);
 
     }

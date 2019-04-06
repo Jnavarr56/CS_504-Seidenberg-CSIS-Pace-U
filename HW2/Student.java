@@ -31,9 +31,19 @@ public class Student {
 
     }
 
-    public static void deleteFromRoster(int i) {
+    public static void deleteStudentByID(String searchId) {
 
-        Student.ALL_STUDENTS.remove(i);
+        ArrayList<Student> roster = Student.ALL_STUDENTS;
+    
+        for(int s = 0; s < roster.size(); s++) {
+
+            if (roster.get(s).getId().equals(searchId)) {
+
+                Student.ALL_STUDENTS.remove(s);
+
+            }
+
+        }
 
     }
 
@@ -178,6 +188,42 @@ public class Student {
         return Student.ALL_STUDENTS.size() == 0 ? "There are currently no students in the roster." : Student.getTable(); 
 
     } 
+
+    public static boolean studentExists(String searchId) {
+
+        ArrayList<Student> roster = Student.ALL_STUDENTS;
+    
+        for(int s = 0; s < roster.size(); s++) {
+
+            if (roster.get(s).getId().equals(searchId)) {
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
+    public static Student fetchStudent(String searchId) {
+
+        ArrayList<Student> roster = Student.ALL_STUDENTS;
+    
+        for(int s = 0; s < roster.size(); s++) {
+
+            if (roster.get(s).getId().equals(searchId)) {
+
+                return roster.get(s);
+
+            }
+
+        }
+
+        return roster.get(0);
+
+    }
 
  }
  
