@@ -25,12 +25,6 @@ public class Student {
 
     }
 
-    private static String fetchNewestId() {
-
-        return Long.toString(System.currentTimeMillis());
-
-    }
-
     public static ArrayList<Student> viewRoster() {
 
         return Student.ALL_STUDENTS;
@@ -49,14 +43,14 @@ public class Student {
         this.finalExam = finalExam;
 
         Student.addStudent(this);
-        this.id = Student.fetchNewestId();
+        this.id = Long.toString(System.currentTimeMillis());
 
     }
 
     public Student() {
 
         Student.addStudent(this);
-        this.id = Student.fetchNewestId();
+        this.id = Long.toString(System.currentTimeMillis());
 
     }
 
@@ -75,6 +69,12 @@ public class Student {
     public void setLevel(String level) {
 
         this.level = level;
+
+    }
+
+    public void setId(String id) {
+
+        this.id = id;
 
     }
 
@@ -127,6 +127,17 @@ public class Student {
         return leftSpace + value + rightSpace;
 
     }
+
+    private static String generateCellSpace(String fieldName, double value) {
+
+        String valueAsStr = String.format("%.2f", value);
+
+        String leftSpace = " ".repeat((fieldName.length() - valueAsStr.length()) / 2);
+        String rightSpace = " ".repeat(fieldName.length() - (leftSpace.length() + valueAsStr.length()));
+
+        return leftSpace + valueAsStr + rightSpace;
+
+    }
     
     public static String getTable() {
 
@@ -142,7 +153,7 @@ public class Student {
                 generateCellSpace(Student.fieldNames[1], student.getLevel()),
                 generateCellSpace(Student.fieldNames[2], Integer.toString(student.getMidtermExam())),
                 generateCellSpace(Student.fieldNames[3], Integer.toString(student.getFinalExam())),
-                generateCellSpace(Student.fieldNames[4], Double.toString(student.calcAvg())),
+                generateCellSpace(Student.fieldNames[4], student.calcAvg()),
                 generateCellSpace(Student.fieldNames[5], Character.toString(student.getLetterGrade())),
                 "-".repeat(headerRow.length()) + "\n"
             ); 
@@ -157,24 +168,14 @@ public class Student {
             dataRows
         );
 
-        return "\n\nCLASS ROSTER AND OPTIONS\n" + table;
+        return "\nSTUDENT ROSTER AND OPTIONS\n" + table;
 
     }
 
 
     public static String displayRoster() {
 
-        if (Student.ALL_STUDENTS.size() == 0) {
-
-            return "There are currently no students in the class roster.\n";
-
-        }
-
-        else {
-
-            return Student.getTable();
-
-        }
+        return Student.ALL_STUDENTS.size() == 0 ? "There are currently no students in the roster." : Student.getTable(); 
 
     } 
 
