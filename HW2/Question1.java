@@ -39,7 +39,7 @@ public class Question1 {
 
                     else if (userDashInput.equals("3")) { 
 
-                        //UpdateStudent.run(); 
+                        UpdateStudent.run(); 
 
                     }
     

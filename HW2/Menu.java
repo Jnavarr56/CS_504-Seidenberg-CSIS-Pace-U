@@ -102,5 +102,21 @@ public class Menu {
 
     }
 
+    public static boolean isValidStrInput(String input, String[] values) {
+
+        for(String s : values) {
+
+            if (s.equals(input)) { 
+
+                return true;
+
+            }
+
+        }
+
+        return false;
+
+    }
+
 
 }
