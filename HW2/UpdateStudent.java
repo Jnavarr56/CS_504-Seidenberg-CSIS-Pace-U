@@ -133,7 +133,7 @@ public class UpdateStudent {
 
         if (!newLvl.equals("-1")) {
 
-            newValuesSummary += " Level: " + newLvl;
+            newValuesSummary += " Level: " + (newLvl.equals("u") ? "UNDERGRADUATE" : "GRADUATE");
         }
 
 
@@ -167,6 +167,12 @@ public class UpdateStudent {
             if (!newFinal.equals("-1")) {
 
                 student.setFinalExam(Integer.parseInt(newFinal));
+
+            }
+
+            if (!Character.toString(student.getLevel().toLowerCase().charAt(0)).equals(newLvl)) {
+
+                Student.replace(student, newLvl.equals("u") ? new UnderGraduateStudent() : new GraduateStudent());
 
             }
 

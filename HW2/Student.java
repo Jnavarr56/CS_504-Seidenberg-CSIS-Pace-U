@@ -225,5 +225,32 @@ public class Student {
 
     }
 
+    public static void replace(Student toReplace, Student replacement) {
+
+        ArrayList<Student> roster = Student.ALL_STUDENTS;
+    
+        for(int s = 0; s < roster.size(); s++) {
+
+            if (roster.get(s).getId().equals(toReplace.getId())) {
+
+                replacement.setId(toReplace.getId());
+                replacement.setMidtermExam(toReplace.getMidtermExam());
+                replacement.setFinalExam(toReplace.getFinalExam());
+                
+                roster.set(s, replacement);
+
+                roster.remove(roster.size() - 1);
+
+                return;
+
+            }
+
+        }
+
+
+        
+
+    }
+
  }
  
