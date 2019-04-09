@@ -10,6 +10,10 @@ public class Question1 {
         Scanner scan = new Scanner(System.in);
         String userDashInput = "0";
 
+        // Test Data:
+        new UnderGraduateStudent(51, 72);
+        new GraduateStudent(50, 70);
+
         while (!Menu.isDashExitOption(userDashInput)) {
 
             Menu.showDashboard();
