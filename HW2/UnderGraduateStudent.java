@@ -4,7 +4,9 @@ public class UnderGraduateStudent extends Student {
 
         super();
 
-        super.setLevel("UNDERGRADUATE");
+        //super.setLevel("UNDERGRADUATE");
+
+        setLevel("UNDERGRADUATE");
 
     }
 
@@ -12,7 +14,9 @@ public class UnderGraduateStudent extends Student {
 
         super(midtermExam, finalExam);
 
-        super.setLevel("UNDERGRADUATE");
+        //super.setLevel("UNDERGRADUATE");
+
+        setLevel("UNDERGRADUATE");
 
     }
 

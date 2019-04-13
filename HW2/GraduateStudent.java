@@ -4,7 +4,9 @@ public class GraduateStudent extends Student {
 
         super();
 
-        super.setLevel("GRADUATE");
+        //super.setLevel("GRADUATE");
+
+        setLevel("GRADUATE");
 
     }
 
@@ -12,7 +14,9 @@ public class GraduateStudent extends Student {
 
         super(midtermExam, finalExam);
 
-        super.setLevel("GRADUATE");
+        //super.setLevel("GRADUATE");
+
+        setLevel("GRADUATE");
 
     }
 
