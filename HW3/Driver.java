@@ -9,7 +9,7 @@ public class Driver {
         // (in addition being instances of their actual classes) 
         // and therefore can all be in an array that holds references to
         // Speaker instances, despite being of different classes.
-        Speaker[] instances = new Speaker[]{
+        Speaker[] instances = {
             new Optimistic(), 
             new Neutral(), 
             new Pessimistic()
