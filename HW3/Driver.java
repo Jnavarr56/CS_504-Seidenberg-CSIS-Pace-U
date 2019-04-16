@@ -27,12 +27,10 @@ public class Driver {
         // have that method defined for itself.
         for (int s = 0; s < instances.length; s++) {
 
-            System.out.println(
-                String.format(
-                    "Testing the %s Class Instance----------------------\n",
-                    instances[s].getClass().getName() 
-                )
-            );
+            System.out.printf(
+                "Testing the %s Class Instance----------------------\n",
+                instances[s].getClass().getName()
+            ); 
 
             instances[s].speak();
             instances[s].announce("pizza");

@@ -6,7 +6,6 @@ public class Optimistic implements Speaker {
 
         System.out.println(msg);
 
-
     }
 
     public void announce(String str) {
