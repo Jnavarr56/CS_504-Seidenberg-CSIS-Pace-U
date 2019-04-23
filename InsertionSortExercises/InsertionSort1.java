@@ -49,7 +49,6 @@ public class InsertionSort1 {
                 }
 
                 arr[0] = toInsert;
-
             }
 
             end++;
