@@ -30,7 +30,7 @@ public class BinarySearch1 {
 
             System.out.println(Arrays.toString(arr));
 
-            if (arr.length < 2) complete = true;
+            if (arr.length == 1 && arr[0] != targetNum) complete = true;
 
         }
         
