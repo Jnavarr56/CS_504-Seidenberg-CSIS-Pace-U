@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String args[]) {
 
-        int[] testData = {5, 4, 3, 2, 1};
+        int[] testData = {65, 32, 400, 33, 1};
 
         boolean done = false;
 
@@ -22,6 +22,12 @@ public class Main {
 
                     done = false;
 
+                    System.out.printf(
+                        "Switching %d with %d\n", 
+                        testData[i], 
+                        testData[i + 1]
+                    );
+
                     temp = testData[i + 1];
 
                     testData[i + 1] = testData[i];
@@ -31,6 +37,8 @@ public class Main {
                 }
     
             }
+
+            System.out.println("");
 
         }
 
