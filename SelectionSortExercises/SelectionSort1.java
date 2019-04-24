@@ -64,8 +64,6 @@ public class SelectionSort1 {
 
             startIdx++;
 
-
-
             if (startIdx == arr.length - 1) {
 
                 done = true;

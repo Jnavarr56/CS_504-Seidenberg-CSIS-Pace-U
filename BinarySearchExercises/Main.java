@@ -9,7 +9,7 @@ public class Main {
 
         //System.out.println(BinarySearch1.binary(testData, 7));
 
-        System.out.println(Arrays.toString(BinarySearch2.binary(testData, 7)));
+        System.out.println(Arrays.toString(BinarySearch2.binary(testData, 84)));
 
     }
 
