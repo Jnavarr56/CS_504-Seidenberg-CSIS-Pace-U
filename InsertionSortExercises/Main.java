@@ -1,9 +1,16 @@
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String args[]) {
 
-        InsertionSort1 asd = new InsertionSort1(new int[]{7,5,8,2,1});
+        System.out.println(
 
+            Arrays.toString(
+                InsertionSort1.sortAscending(new int[]{7,5,8,2,1})
+            )
+            
+        );
 
     }
 

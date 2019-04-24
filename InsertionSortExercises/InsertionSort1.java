@@ -2,8 +2,8 @@ import java.util.*;
 
 public class InsertionSort1 {
 
-    public InsertionSort1(int[] arr) {
-        
+    public static int[] sortAscending(int[] arr) {
+
         int temp;
 
         int end = 0;
@@ -35,6 +35,8 @@ public class InsertionSort1 {
             System.out.println(Arrays.toString(arr));
 
         }
+
+        return arr;
 
     }
 
