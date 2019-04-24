@@ -3,52 +3,31 @@ import java.util.*;
 public class InsertionSort1 {
 
     public InsertionSort1(int[] arr) {
+        
+        int temp;
 
         int end = 0;
 
-        int toInsert = arr[0];
-
-        int shiftCount = 0;
-
-        int temp = 0;
-
-        boolean shouldShift;
+        int shiftCount;
 
         while (end < arr.length) {
 
-            shouldShift = false;
+            if (arr[end] < arr[0]) {
 
-            for (int i = 0; i <= end; i++) {
-
-                if (arr[end] < arr[i]) {
-
-                    toInsert = arr[end];
-
-                    shouldShift = true;
-
-                    break;
-
-                }
-
-            }
-
-            if (shouldShift) {
-
+                temp = arr[end];
+                
                 shiftCount = end;
 
                 while (shiftCount > 0) {
 
-                    temp = arr[shiftCount - 1];
-
-                    arr[shiftCount] = temp;
-
-                    System.out.println(arr[shiftCount]);
+                    arr[shiftCount] = arr[shiftCount - 1];
 
                     shiftCount--;
 
                 }
 
-                arr[0] = toInsert;
+                arr[0] = temp;
+
             }
 
             end++;
