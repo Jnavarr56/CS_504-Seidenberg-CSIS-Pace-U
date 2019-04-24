@@ -4,52 +4,63 @@ public class Main {
 
     private static int getMinIndex(int startSearchIdx, int[] arr) {
 
-        int currentMinIndex = startSearchIdx;
+        int minIdx = startSearchIdx;
 
-        for (int i = startSearchIdx + 1; i < arr.length; i++) {
+        for (int i = startSearchIdx; i < arr.length; i++) {
 
-            currentMinIndex = arr[i] < arr[currentMinIndex] ? i : currentMinIndex;
+            minIdx = arr[i] < arr[minIdx] ? i : minIdx;
 
         }
 
-        return currentMinIndex;
+        return minIdx; 
         
     }
 
     private static int[] selectionSort(int[] arr) {
 
-        int temp, minIndex;
+        int temp;
 
-        for (int i = 0; i < arr.length; i++) {
+        int minIdx;
 
-            minIndex = getMinIndex(i, arr);
-            temp = arr[minIndex];
+        for (int i = 0; i < arr.length - 1; i++) {
 
-            arr[minIndex] = arr[i];
-            arr[i] = temp;
+            minIdx = getMinIndex(i, arr);
+
+            if (arr[minIdx] < arr[i]) {
+
+                temp = arr[i];
+
+                arr[i] = arr[minIdx];
+                arr[minIdx] = temp;
+
+            }
 
         }
 
         return arr;
-
+`
     }
 
     public static int[] insertionSort(int arr[]) {  
 
-        for (int j = 1; j < arr.length; j++) {  
+        int key;
 
-            int key = arr[j];  
+        int y;
 
-            int i = j - 1;  
+        for (int x = 0; x < arr.length; x++) {
 
-            while ((i > -1) && (arr[i] > key)) {  
+            key = arr[x];
+            y = x - 1;
 
-                arr [i + 1] = arr [i];  
+            while((y > -1) && (arr[y] > key)) {
 
-                i--;  
-            }  
+                arr[y + 1] = arr[y];
 
-            arr[i+1] = key;  
+                y--;
+
+            }
+
+            arr[y + 1] = key;
 
         }
         
@@ -66,25 +77,24 @@ public class Main {
 
             done = true;
 
-            for(int x = 0; x < arr.length - 1; x++) {
+            for (int i = 0; i < arr.length - 1; i++) {
 
-                if (arr[x + 1] < arr[x]) {
-    
+                if (arr[i + 1] < arr[i]) {
+
                     done = false;
-    
-                    temp = arr[x];
-    
-                    arr[x] = arr[x + 1];
-    
-                    arr[x + 1] = temp;
-    
+
+                    temp = arr[i];
+
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+
                 }
-    
+
             }
-            
+
         }
 
-        return arr;
+        return arr; //Return sorted array
 
     }  
 
@@ -94,24 +104,20 @@ public class Main {
 
         int mid = arr.length/2;
 
-        int end = arr.length - 1;
+        int end = arr.length -1;
 
         while (end - start > 1) {
 
             if (targetValue < arr[mid]) {
 
                 end = mid;
-    
-                mid = (start + end)/2;
-    
+
             }
-    
+
             else if (targetValue > arr[mid]) {
-    
+
                 start = mid;
-    
-                mid = (start + end)/2;
-    
+
             }
 
             else {
@@ -120,15 +126,17 @@ public class Main {
 
             }
 
+            mid = (start + end)/2;
+
         }
 
-        if (arr[start] == targetValue) {
+        if (targetValue == arr[start]) {
 
             return start;
 
         }
 
-        else if (arr[end] == targetValue) {
+        else if (targetValue == arr[end]) {
 
             return end;
 
@@ -139,14 +147,15 @@ public class Main {
             return -1;
 
         }
-
+        
     }  
 
     public static void main(String[] args) {
 
         int[] sortTestData = {55, 23, 62, 3, 1, 79, 100, 5000, 5, 1, 12, 67, 4000, 231};
-
         int[] searchTestData = {1, 2, 3, 4, 5, 78, 200, 335, 1002, 40038, 6666, 8698, 11432, 50000};
+
+        // Uncomment each section to test it. Will print results to terminal
 
         // Selection Sort:
         System.out.println(
@@ -173,7 +182,7 @@ public class Main {
                     Arrays.copyOf(sortTestData, sortTestData.length)
                 )
             )
-        );
+        );  
 
         // Binary Search (target value index is 11):
         System.out.println(
@@ -186,3 +195,5 @@ public class Main {
     }
 
 }
+
+
