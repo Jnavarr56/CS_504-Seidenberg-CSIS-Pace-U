@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class Main {
@@ -98,7 +99,7 @@ public class Main {
 
         int end = arr.length - 1;
 
-        while (start < mid && mid < end) {
+        while (end - start > 1) {
 
             if (targetValue < arr[mid]) {
 
@@ -122,9 +123,29 @@ public class Main {
 
             }
 
+            System.out.println( 
+                Arrays.toString( Arrays.copyOfRange(arr, start, end + 1) ) 
+            );
+
         }
 
-        return -1;
+        if (arr[start] == targetValue) {
+
+            return start;
+
+        }
+
+        else if (arr[end] == targetValue) {
+
+            return end;
+
+        }
+
+        else {
+
+            return -1;
+
+        }
 
     }  
 
@@ -133,7 +154,7 @@ public class Main {
 
         int[] sortTestData = {55, 23, 62, 3, 1, 79, 100, 5000, 5, 1, 12, 67, 4000, 231};
 
-        int[] searchTestData = {1, 2, 3, 4, 5, 78, 335, 200, 1002, 40038, 6666, 8698, 11432, 50000};
+        int[] searchTestData = {1, 2, 3, 4, 5, 78, 200, 335, 1002, 40038, 6666, 8698, 11432, 50000};
 
         // Selection Sort:
         System.out.println(Arrays.toString(selectionSort(Arrays.copyOf(sortTestData, sortTestData.length))));
@@ -145,11 +166,10 @@ public class Main {
         System.out.println(Arrays.toString(bubbleSort(Arrays.copyOf(sortTestData, sortTestData.length))));
 
         
-        // Binary Search (target value index is 7):
-        System.out.println(binarySearch(Arrays.copyOf(searchTestData, searchTestData.length), 335));
+        // Binary Search (target value index is 11):
+        System.out.println(binarySearch(Arrays.copyOf(searchTestData, searchTestData.length), 8698));
 
         
     }
 
 }
-
