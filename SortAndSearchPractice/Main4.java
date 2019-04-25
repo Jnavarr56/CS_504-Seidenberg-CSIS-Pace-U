@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class Main4 {
 
     private static int getMinIndex(int startSearchIdx, int[] arr) {
 
@@ -12,13 +12,13 @@ public class Main {
 
         }
 
-        return minIdx; 
+        return minIdx; //Return the index of the minimum item in array, starting the search from the startSearchIdx
         
     }
 
     private static int[] selectionSort(int[] arr) {
 
-        int temp;
+        int temp; 
 
         int minIdx;
 
@@ -37,14 +37,13 @@ public class Main {
 
         }
 
-        return arr;
+        return arr; //Return sorted array
 
     }
 
     public static int[] insertionSort(int arr[]) {  
 
         int key;
-
         int y;
 
         for (int x = 0; x < arr.length; x++) {
@@ -52,19 +51,18 @@ public class Main {
             key = arr[x];
             y = x - 1;
 
-            while((y > -1) && (arr[y] > key)) {
+            while ((y > -1) && (arr[y] > key)) {
 
                 arr[y + 1] = arr[y];
 
-                y--;
-
+                y --;
             }
 
             arr[y + 1] = key;
 
         }
         
-        return arr;
+        return arr; //Return sorted array
     }  
 
     public static int[] bubbleSort(int arr[]) {  
@@ -76,7 +74,7 @@ public class Main {
         while (!done) {
 
             done = true;
-
+            
             for (int i = 0; i < arr.length - 1; i++) {
 
                 if (arr[i + 1] < arr[i]) {
@@ -89,7 +87,7 @@ public class Main {
                     arr[i + 1] = temp;
 
                 }
-
+    
             }
 
         }
@@ -101,38 +99,32 @@ public class Main {
     public static int binarySearch(int arr[], int targetValue) {  
 
         int start = 0;
-
         int mid = arr.length/2;
-
-        int end = arr.length -1;
+        int end = arr.length - 1;
 
         while (end - start > 1) {
 
             if (targetValue < arr[mid]) { end = mid; }
-
             else if (targetValue > arr[mid]) { start = mid; }
-
             else { return mid; }
 
             mid = (start + end)/2;
-
         }
 
         if (targetValue == arr[start]) { return start; }
-
         else if (targetValue == arr[end]) { return end; }
-
-        else { return -1; }
+        else { return - 1; }
         
     }  
 
     public static void main(String[] args) {
 
-        int[] sortTestData = {97, 16, 12, 58, 87, 32, 84, 68, 100, 46, 58, 88, 93, 26, 25, 19, 26, 8, 97, 45};
+        int[] sortTestData = {55, 23, 62, 3, 1, 79, 100, 5000, 5, 1, 12, 67, 4000, 231};
         int[] searchTestData = {1, 2, 3, 4, 5, 78, 200, 335, 1002, 40038, 6666, 8698, 11432, 50000};
 
         // Uncomment each section to test it. Will print results to terminal
 
+        
         // Selection Sort:
         System.out.println(
             Arrays.toString(
@@ -142,6 +134,7 @@ public class Main {
             )
         );
 
+        
         // Insertion Sort: <--- THE HARDEST CURRENTLY
         System.out.println(
             Arrays.toString(
@@ -151,6 +144,7 @@ public class Main {
             )
         );
 
+        
         // Bubble Sort:
         System.out.println(
             Arrays.toString(
@@ -158,7 +152,7 @@ public class Main {
                     Arrays.copyOf(sortTestData, sortTestData.length)
                 )
             )
-        );  
+        );
 
         // Binary Search (target value index is 11):
         System.out.println(
