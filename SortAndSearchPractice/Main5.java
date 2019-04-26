@@ -4,23 +4,49 @@ public class Main {
 
     private static int getMinIndex(int startSearchIdx, int[] arr) {
 
-        /*your code here*/
+        int minIdx = startSearchIdx;
 
-        return -1; //Return the index of the minimum item in array, starting the search from the startSearchIdx
+        for (int i = startSearchIdx; i < arr.length; i++) {
+
+            minIdx = arr[i] < arr[minIdx] ? i : minIdx;
+
+        }
+
+        return minIdx; //Return the index of the minimum item in array, starting the search from the startSearchIdx
         
     }
 
     private static int[] selectionSort(int[] arr) {
 
-        /*your code here*/
+        int temp;
 
+        int minIdx;
 
+        for (int i = 0; i < arr.length; i++) {
+
+            minIdx = getMinIndex(i, arr);
+
+            temp = arr[i];
+
+            arr[i] = arr[minIdx];
+            arr[minIdx] = temp;
+
+        }
 
         return arr; //Return sorted array
 
     }
 
     public static int[] insertionSort(int arr[]) {  
+
+        int key;
+        int y;
+
+        for (int i = 0; i < arr.length; i++) {
+
+            
+
+        }
 
         /*your code here*/
         
@@ -46,11 +72,11 @@ public class Main {
     public static void main(String[] args) {
 
         int[] sortTestData = {55, 23, 62, 3, 1, 79, 100, 5000, 5, 1, 12, 67, 4000, 231};
-        int[] searchTestData = {1, 2, 3, 4, 5, 78, 200, 335, 1002, 4038, 6666, 8698, 11432, 50000};
+        int[] searchTestData = {1, 2, 3, 4, 5, 78, 200, 335, 1002, 40038, 6666, 8698, 11432, 50000};
 
         // Uncomment each section to test it. Will print results to terminal
 
-        /*
+        
         // Selection Sort:
         System.out.println(
             Arrays.toString(
@@ -61,7 +87,7 @@ public class Main {
         );
 
         
-        
+
         // Insertion Sort: <--- THE HARDEST CURRENTLY
         System.out.println(
             Arrays.toString(
@@ -70,7 +96,9 @@ public class Main {
                 )
             )
         );
-        
+
+        /*
+
         // Bubble Sort:
         System.out.println(
             Arrays.toString(
@@ -87,7 +115,7 @@ public class Main {
                 8698
             )
         );
-        
+
         */
 
     }
