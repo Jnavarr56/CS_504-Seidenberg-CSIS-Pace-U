@@ -13,18 +13,36 @@ public class Main {
 
         Node d = new Node("Cantaloupe");
 
-        // Add Nodes to LinkedList and print.
+        // Add Nodes to LinkedList (at end) and print.
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         singleLinkedList.add(a);
         singleLinkedList.add(b);
         singleLinkedList.add(c);
         singleLinkedList.printList();
 
+        System.out.println("");
+
         // Add a Nodes to LinkedList at specific index and print.
         singleLinkedList.add(d, 2);
         singleLinkedList.printList();
 
-        System.out.println("\n\nImplementation of a Single Linked List ========");
+        System.out.println("");
+
+        // Remove last Node and print.
+        singleLinkedList.remove();
+        singleLinkedList.printList();
+
+        System.out.println("");
+
+        // Remove Node at specific index.
+        singleLinkedList.remove(1);
+        singleLinkedList.printList();
+        
+
+
+        /*
+
+        System.out.println("\n\nImplementation of a Double Linked List ========");
         // Implementation of a Double Linked List ========
 
         Node a2 = new Node("Adam");
@@ -43,6 +61,8 @@ public class Main {
         doubleLinkedList.printForwards();
 
         doubleLinkedList.printBackwards();
+
+        */
 
     }
 }

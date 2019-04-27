@@ -1,25 +1,40 @@
 public class Node {
 
-    public Node prev;
-    public Node next;
-    private String data;
-    
+    private Node prev = null;
+    private Node next = null;
+    private String data = "";
 
     public Node() {
-        
-        next = null;
-
-        prev = null;
 
     }
 
     public Node(String data) {
 
         this.data = data;
-        
-        next = null;
 
-        prev = null;
+    }
+
+    public void setPrev(Node prev) {
+
+        this.prev = prev;
+
+    }
+
+    public Node getPrev() {
+
+        return prev;
+
+    }
+
+    public void setNext(Node next) {
+
+        this.next = next;
+
+    }
+
+    public Node getNext() {
+
+        return next;
 
     }
 
@@ -35,27 +50,9 @@ public class Node {
 
     }
 
-    public void setNext(Node next) {
+    public void clearNext() {
 
-        this.next = next;
-
-    }
-
-    public Node getNext() {
-
-        return next;
-
-    }
-    
-    public void setPrev(Node prev) {
-
-        this.prev = prev;
-
-    }
-
-    public Node getPrev() {
-
-        return prev;
+        next = null;
 
     }
 

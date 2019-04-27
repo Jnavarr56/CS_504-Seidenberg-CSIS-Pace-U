@@ -1,10 +1,15 @@
 public class SingleLinkedList {
 
-    private Node head;
+    private Node head = null;
+    private Node tail = null;
 
     public SingleLinkedList() {
-        
-        head = null;
+
+    }
+
+    public SingleLinkedList(Node head) {
+
+        this.head = head;
 
     }
 
@@ -28,7 +33,7 @@ public class SingleLinkedList {
 
             trav.setNext(newNode);
 
-        } 
+        }
 
     }
 
@@ -42,61 +47,78 @@ public class SingleLinkedList {
 
         else {
 
-            if (index == 0) {
+            int count = 0;
+            Node trav = head;
+ 
+            while ((count < index - 1) && (trav.getNext()!= null)) {
 
-                newNode.setNext(head);
-                head = newNode;
-
-            }
-
-            else {
-
-                Node trav = head;
-
-                int count = 0;
-
-                while (count < index - 1) {
-
-                    trav = trav.getNext();
-
-                    count++;
-
-                }
-
-                newNode.setNext(trav.getNext());
-                trav.setNext(newNode);
+                trav = trav.getNext();
+                count++;
 
             }
 
-        } 
-
-    }
-
-    public Node getHead() {
-
-        return head;
-
-    }
-    
-    public void printList() {
-
-        System.out.println("SINGLE LINKED LIST----------");
-
-        int nodeNum = 0;
-
-        Node trav = head;
-
-        while (trav.getNext() != null) {
-
-            System.out.println(" Node: " + nodeNum + " " + trav.getData());
-
-            trav = trav.getNext();
-
-            nodeNum++;
+            newNode.setNext(trav.getNext());
+            trav.setNext(newNode);
 
         }
 
-        System.out.println(" Node: " + nodeNum + " " + trav.getData());
+    }
+
+    public void remove() {
+
+        if (head != null) {
+
+            Node trav = head;
+            Node last = null;
+
+            while (trav.getNext() != null) {
+                
+                last = trav;
+                trav = trav.getNext();
+
+            }
+
+            last.clearNext();
+
+        }
+        
+    }
+
+    public void remove(int index) {
+
+        if (head != null) {
+
+            int count = 0;
+            Node trav = head;
+
+            while ((count < index - 1)  && (trav.getNext() != null)) {
+                
+                trav = trav.getNext();
+                count++;
+
+            }
+
+            trav.setNext(trav.getNext().getNext());
+
+        }
+        
+    }
+
+    public void printList() {
+
+        if (head != null) {
+
+            Node trav = head;
+            System.out.println(head.getData());
+
+            while (trav.getNext() != null) {
+
+                trav = trav.getNext();
+                System.out.println(trav.getData());
+
+            }
+
+        }
 
     }
 
