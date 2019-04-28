@@ -1,16 +1,15 @@
 public class SingleLinkedList {
 
     private Node head = null;
-    private Node tail = null;
 
     public SingleLinkedList() {
-
+        
     }
 
     public SingleLinkedList(Node head) {
 
         this.head = head;
-
+        
     }
 
     public void add(Node newNode) {
@@ -25,7 +24,7 @@ public class SingleLinkedList {
 
             Node trav = head;
 
-            while (trav.getNext() != null) {
+            while(trav.getNext() != null) {
 
                 trav = trav.getNext();
 
@@ -37,7 +36,7 @@ public class SingleLinkedList {
 
     }
 
-    public void add(Node newNode, int index) {
+    public void add(Node newNode, int idx) {
 
         if (head == null) {
 
@@ -47,21 +46,33 @@ public class SingleLinkedList {
 
         else {
 
-            int count = 0;
-            Node trav = head;
- 
-            while ((count < index - 1) && (trav.getNext()!= null)) {
+            if (idx == 0) {
 
-                trav = trav.getNext();
-                count++;
+                newNode.setNext(head);
+                head = newNode;
 
             }
 
-            newNode.setNext(trav.getNext());
-            trav.setNext(newNode);
+            else {
+
+                int count = 0;
+                Node trav = head;
+
+                while (count < idx - 1) {
+
+                    trav = trav.getNext();
+
+                    count++;
+
+                }
+
+                newNode.setNext(trav.getNext());
+                trav.setNext(newNode);
+
+            }
 
         }
-
+        
     }
 
     public void remove() {
@@ -72,7 +83,7 @@ public class SingleLinkedList {
             Node last = null;
 
             while (trav.getNext() != null) {
-                
+
                 last = trav;
                 trav = trav.getNext();
 
@@ -81,19 +92,20 @@ public class SingleLinkedList {
             last.clearNext();
 
         }
-        
+
     }
 
-    public void remove(int index) {
+    public void remove(int idx) {
 
         if (head != null) {
 
             int count = 0;
             Node trav = head;
 
-            while ((count < index - 1)  && (trav.getNext() != null)) {
-                
+            while (count < idx - 1) {
+
                 trav = trav.getNext();
+
                 count++;
 
             }
@@ -101,7 +113,7 @@ public class SingleLinkedList {
             trav.setNext(trav.getNext().getNext());
 
         }
-        
+
     }
 
     public void printList() {
@@ -109,14 +121,16 @@ public class SingleLinkedList {
         if (head != null) {
 
             Node trav = head;
-            System.out.println(head.getData());
 
             while (trav.getNext() != null) {
 
-                trav = trav.getNext();
                 System.out.println(trav.getData());
 
+                trav = trav.getNext();
+
             }
+
+            System.out.println(trav.getData());
 
         }
 

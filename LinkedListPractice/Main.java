@@ -6,6 +6,7 @@ public class Main {
 
         // Implementation of a Single Linked List ========
 
+        
         // Create Nodes with some data.
         Node a = new Node("Apples");
         Node b = new Node("Bananas");
