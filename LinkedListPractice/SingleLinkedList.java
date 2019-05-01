@@ -2,16 +2,6 @@ public class SingleLinkedList {
 
     private Node head = null;
 
-    public SingleLinkedList() {
-        
-    }
-
-    public SingleLinkedList(Node head) {
-
-        this.head = head;
-        
-    }
-
     public void add(Node newNode) {
 
         if (head == null) {
@@ -24,7 +14,7 @@ public class SingleLinkedList {
 
             Node trav = head;
 
-            while(trav.getNext() != null) {
+            while (trav.getNext() != null) {
 
                 trav = trav.getNext();
 
@@ -36,7 +26,7 @@ public class SingleLinkedList {
 
     }
 
-    public void add(Node newNode, int idx) {
+    public void add(Node newNode, int index) {
 
         if (head == null) {
 
@@ -46,7 +36,7 @@ public class SingleLinkedList {
 
         else {
 
-            if (idx == 0) {
+            if (index == 0) {
 
                 newNode.setNext(head);
                 head = newNode;
@@ -55,24 +45,36 @@ public class SingleLinkedList {
 
             else {
 
-                int count = 0;
                 Node trav = head;
+                int count = 0;
 
-                while (count < idx - 1) {
+                while (count < index - 1 && trav.getNext() != null) {
 
                     trav = trav.getNext();
-
                     count++;
 
                 }
 
-                newNode.setNext(trav.getNext());
-                trav.setNext(newNode);
+                if (count == index - 1) {
 
+                    if (trav.getNext() != null) {
+
+                        newNode.setNext(trav.getNext());
+                        trav.setNext(newNode);
+
+                    }
+
+                    else {
+
+                        trav.setNext(newNode); 
+
+                    }
+
+                }
             }
 
         }
-        
+
     }
 
     public void remove() {
@@ -95,22 +97,55 @@ public class SingleLinkedList {
 
     }
 
-    public void remove(int idx) {
+    public void remove(int index) {
 
         if (head != null) {
 
-            int count = 0;
-            Node trav = head;
+            if (index == 0) {
 
-            while (count < idx - 1) {
+                if (head.getNext() == null) {
 
-                trav = trav.getNext();
+                    head = null;
 
-                count++;
+                }
+
+                else {
+
+                    head = head.getNext();
+
+                }
 
             }
 
-            trav.setNext(trav.getNext().getNext());
+            else {
+
+                Node trav = head;
+                int count = 0;
+
+                while (count < index - 1 && trav.getNext() != null) {
+
+                    trav = trav.getNext();
+                    count++;
+
+                }
+
+                if (count == index - 1 && trav.getNext() != null) {
+
+                    if (trav.getNext().getNext() == null) {
+
+                        trav.clearNext();
+
+                    }
+
+                    else {
+
+                        trav.setNext(trav.getNext().getNext());
+
+                    }
+
+                }
+
+            }
 
         }
 
@@ -127,6 +162,7 @@ public class SingleLinkedList {
                 System.out.println(trav.getData());
 
                 trav = trav.getNext();
+ 
 
             }
 
@@ -135,5 +171,7 @@ public class SingleLinkedList {
         }
 
     }
+
+
 
 }

@@ -14,12 +14,13 @@ public class Main {
 
         return minIdx;
 
+
     }
 
     private static int[] selectionSort(int[] arr) {
 
-        int minIdx;
         int temp;
+        int minIdx;
 
         for (int i = 0; i < arr.length; i++) {
 
@@ -37,14 +38,14 @@ public class Main {
         }
 
         return arr;
-        
+
     }
 
     public static int[] insertionSort(int arr[]) {
 
-        int y;
         int key;
-        
+        int y;
+
         for (int x = 0; x < arr.length; x++) {
 
             key = arr[x];
@@ -53,7 +54,6 @@ public class Main {
             while ((y > -1) && (arr[y] > key)) {
 
                 arr[y + 1] = arr[y];
-
                 y--;
 
             }
@@ -67,7 +67,7 @@ public class Main {
     }  
 
     public static int[] bubbleSort(int arr[]) {
-        
+
         int temp;
         boolean done;
 
@@ -82,7 +82,7 @@ public class Main {
                     done = false;
 
                     temp = arr[i];
-                    
+
                     arr[i] = arr[i + 1];
                     arr[i + 1] = temp;
 
@@ -93,14 +93,14 @@ public class Main {
         } while(!done);
 
         return arr;
-
+    
     }  
 
     public static int binarySearch(int arr[], int targetValue) {
 
         int start = 0;
         int mid = arr.length/2;
-        int end = arr.length -1;
+        int end = arr.length - 1;
 
         while (end - start > 1) {
 
@@ -108,7 +108,7 @@ public class Main {
 
                 end = mid;
 
-            }   
+            } 
 
             else if (targetValue > arr[mid]) {
 

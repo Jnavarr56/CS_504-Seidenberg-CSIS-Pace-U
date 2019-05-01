@@ -29,14 +29,14 @@ public class Node {
 
         this.data = data;
 
-    }
+    } 
 
     public String getData() {
 
         return data;
 
     }
-    
+
     public void clearNext() {
 
         next = null;
