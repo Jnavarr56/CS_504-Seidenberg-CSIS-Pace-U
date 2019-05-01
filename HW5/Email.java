@@ -20,4 +20,8 @@ public class Email {
         return emailStr.substring(emailStr.lastIndexOf('.') + 1,emailStr.length());
     }
 
+    public String getEmailStr() {
+        return emailStr;
+    }
+
 }

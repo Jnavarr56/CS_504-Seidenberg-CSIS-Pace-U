@@ -1,6 +1,7 @@
 //https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java/45106675
-import java.util.*;
 import java.io.*;
+import java.util.*;
+import java.nio.file.*;
 
 public class Main {
 
@@ -41,9 +42,30 @@ public class Main {
         return arr;
     }
 
+    private static void writeToFile(String results) {
+
+        try  {
+
+            FileWriter fileWriter = new FileWriter("./results.csv");
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print(results);
+            printWriter.close();
+
+            System.out.println("Wrote results to results.csv!");
+
+        }
+
+        catch(IOException e) {
+
+            System.out.println(e);
+
+        }
+
+    }
+
     public static void main(String args[]) {
 
-        ArrayList<Email> attendance = readEmails("attendance.txt");
+        ArrayList<Email> attendance = readEmails("./attendance.txt");
         attendance = sortByCompanyThenEmail(attendance);
         boolean billAttended = false;
         for (Email e : attendance) {
@@ -74,10 +96,29 @@ public class Main {
         companys.add(company);
         companyCounts.add("*".repeat(counter));
 
+        String col;
         for (int c = 0; c < companys.size(); c++) {
-            String col = companys.get(c) + ": ";
+            col = companys.get(c) + ": ";
             System.out.println(" ".repeat(6 - col.length()) + col + companyCounts.get(c));
         }
+
+        String results = "Company, First Name, Last Name, Email\n";
+        String[] firstLast = new String[2];
+        for (Email line : attendance) {;
+            firstLast = line.parseEmailName().split("\\.");
+            results += String.format(
+                "%s,%s,%s,%s\n",
+                line.parseCompanyName(),
+                firstLast[0],
+                firstLast[1],
+                line.getEmailStr()
+            );
+            
+        }
+
+        writeToFile(results);
+
     }
 
 }
+
