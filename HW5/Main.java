@@ -1,4 +1,4 @@
-//https://stackoverflow.com/questions/4805606/how-to-sort-by-two-fields-in-java/45106675
+
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -17,7 +17,7 @@ public class Main {
                     int sComp = company1.compareTo(company2);
                     if (sComp != 0) return sComp;
         
-                    String name1 = ((Email) email1).parseEmailName();
+                    String name1 = ((Email) email1).pars    eEmailName();
                     String name2 = ((Email) email2).parseEmailName();
                     return name1.compareTo(name2);
                 }
